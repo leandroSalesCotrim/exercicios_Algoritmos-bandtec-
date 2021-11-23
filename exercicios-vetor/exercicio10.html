@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10</title>
+</head>
+
+<body>
+    <p>Número:</p>
+    <input type="text" id="input_numero">
+    <br>
+    <button onclick="analisar_historico()">
+        Analisar Histórico
+    </button>
+    <div id="div_res"></div>
+</body>
+
+</html>
+<script>
+    var lista_num = [];
+
+    function analisar_historico() {
+        var num = Number(input_numero.value);
+        lista_num.push(num);
+
+        var menor = num;
+        var maior = num;
+
+        div_res.innerHTML ="";
+
+        for (var c = 0; c < lista_num.length; c++) {
+            div_res.innerHTML += lista_num[c]+"<br>";
+            
+            if(lista_num[c] < menor){
+                menor = lista_num[c];
+            }
+            if(lista_num[c] > maior){
+                maior = lista_num[c];
+            }
+        }
+        div_res.innerHTML += "Maior número : "+maior+"<br>Menor número : "+menor+"<br>";
+    }
+
+</script>

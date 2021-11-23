@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de filmes</h1>
+    <br>
+    <h4>Insira o nome do filme</h4>
+    <input type="text" id="input_filme">
+    <button onclick="cadastrar()">Cadastrar filme</button>
+
+    <div id="div_result">
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    var filmes = [];
+
+    function cadastrar(){
+
+        filmes [filmes.length] = input_filme.value;
+
+        div_result.innerHTML = "";
+
+        div_result.innerHTML += "<br>Seu filme favorito: "+filmes[0];
+
+        if(filmes[2] != undefined){
+            div_result.innerHTML += "<br>Seu 3º filme favorito: "+filmes[2];
+        }else{
+            div_result.innerHTML += "<br>Seu 3º filme favorito: Nenhum cadastrado ainda";
+        }
+
+        div_result.innerHTML += "<br>Total de filmes cadastrados: "+filmes.length;
+
+    }
+</script>

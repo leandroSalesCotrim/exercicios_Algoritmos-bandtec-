@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 11</title>
+</head>
+
+<body>
+    <h1>Registro de depósitos</h1>
+    <h3>dia do depósito</h3>
+    <input type="text" id="input_dia">
+    <h3>valor do depósito</h3>
+    <input type="text" id="input_valor">
+    <button onclick="guardar()">Guardar</button>
+
+    <h1>Revisão de depósitos</h1>
+
+    <h3>Primeiro intervalo de dias</h3>
+    <input type="text" id="input_v1">
+    <h3>Segundo intervalo de dias</h3>
+    <input type="text" id="input_v2">
+    <button onclick="rever()">Verificar</button>
+
+    <div id="div_res"></div>
+</body>
+
+</html>
+<script>
+    var dias = [];
+    var valores = [];
+
+    function guardar() {
+        var dia = Number(input_dia.value);
+        var valor = Number(input_valor.value);
+
+        dias.push(dia);
+        valores.push(valor);
+    }
+
+    function rever() {
+        var v1 = Number(input_v1.value);
+        var v2 = Number(input_v2.value);
+        var soma = 0;
+        var pos = 0;
+        var qtd = 0;
+
+        for (var i = v1; i <= v2; i++) {
+
+            if (dias[pos] >= v1 && dias[pos] <= v2) {
+                if (pos % 2 == 0) {
+                    div_res.innerHTML += "<span style='background-color:#13FA4B;'>Dia:" + dias[pos] + " Valor depositado = R$" + valores[pos] + "</span><br>"
+                } else {
+                    div_res.innerHTML += "<span style='background-color:#02A6E3;'>Dia:" + dias[pos] + " Valor depositado = R$" + valores[pos] + "</span><br>"
+                }
+                soma += valores[pos];
+
+                console.log("somando +" + valores[pos]);
+                console.log("qtd =" + qtd);
+                qtd++;
+            }
+            pos++;
+        }
+
+        div_res.innerHTML += "Dias selecionados:" + qtd + "<br>Valor total de depósitos:R$" + soma;
+
+    }
+</script>

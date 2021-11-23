@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+
+<html lang="pt"> 
+
+<head> 
+
+  <meta charset="UTF-8"> 
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>Exercicio 7</title> 
+
+</head> 
+
+<body> 
+
+  <h1>Cadastro de alunos</h1> 
+
+  <p>Insira o nome do aluno</p> 
+
+  <input type="text" id="input_aluno"> 
+
+  <button onclick="cadastrar()">Cadastrar</button> 
+
+  <button onclick="pesquisar_aluno()"> 
+
+    Pesquisar 
+
+  </button>   
+
+  <div id="div_res"></div> 
+
+ 
+ 
+
+</body> 
+
+</html> 
+
+ 
+ 
+
+<script> 
+
+   
+
+  var alunos = []; 
+
+  function cadastrar() { 
+
+      var nome = input_aluno.value; 
+
+ 
+ 
+
+      alunos.push(nome); 
+
+ 
+ 
+
+      div_res.innerHTML = ""; 
+
+      for (var posicao_aluno = 0; posicao_aluno < alunos.length; posicao_aluno++) { 
+
+          div_res.innerHTML += `${alunos[posicao_aluno]}<br>`; 
+
+      } 
+
+  } 
+
+ 
+ 
+
+  function pesquisar_aluno() { 
+
+      var nome = input_aluno.value;
+
+      var aluno_contagem = 0; 
+
+      var aluno_existente = false; 
+
+      for (var posicao_aluno = 0; posicao_aluno < alunos.length; posicao_aluno++) { 
+
+          if (alunos[posicao_aluno].toLowerCase() == nome.toLowerCase()) { 
+
+              aluno_existente = true; 
+
+              aluno_contagem++; 
+
+          } 
+
+      } 
+
+ 
+ 
+
+      if (aluno_existente == true) { 
+
+          alert(`Aluno ${nome} encotrado\n${aluno_contagem} resultados com o nome encontrado`); 
+
+      } 
+
+  } 
+
+</script> 
+
+ 

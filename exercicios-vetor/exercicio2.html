@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registro de viagem</h1>
+    <br>
+    <h4>Insira o nome do local</h4>
+    <input type="text" id="input_local">
+    <br>
+    <button onclick="cadastrar()">Cadastrar local de viagem</button>
+
+    <h4>Insira um número para relembrar uma viagem a um local</h4>
+    <input type="text" id="input_posicao">
+    <button onclick="relembrar()">Relembrar viagem</button>
+
+    <div id="div_result">
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    var local = [];
+
+    function cadastrar(){
+
+        local [local.length] = input_local.value;
+
+    }
+
+    function relembrar(){
+        posicao = input_posicao.value;
+        
+        div_result.innerHTML = local[posicao-1];
+
+        if(local[posicao-1] == undefined){
+            div_result.innerHTML = "Você não fez uma "+posicao+"ª viagem!";
+        }
+    }
+</script>

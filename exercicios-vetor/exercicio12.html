@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 12</title>
+</head>
+
+<body>
+    <h1>Registro de notas</h1>
+    <h3>Insira o RA do aluno</h3>
+    <input type="text" id="input_ra">
+    <h3>Insira a nota</h3>
+    <input type="text" id="input_nota">
+
+    <button onclick="guardar()">Guardar</button>
+
+    <h1>Analisar notas</h1>
+    <h3>Insira se deseja ver notas pares ou impares ("i" ou "p")</h3>
+    <input type="text" id="input_tipo" maxlength="1">
+
+    <button onclick="analise()">Analisar</button>
+
+    <div id="div_res"></div>
+</body>
+
+</html>
+<script>
+    var notas = [];
+    var ras = [];
+
+    function guardar() {
+        var nota = Number(input_nota.value);
+        var ra = Number(input_ra.value);
+
+        notas.push(nota);
+        ras.push(ra);
+    }
+
+    function analise() {
+        var tipo = (input_tipo.value).toLowerCase();
+        var soma = 0;//variavel para armazenar soma
+        var media = 0;//variavel para armazenar media
+        var pos = [];//variavel para armazenar a posição do vetor de notas e ra que seja impar ou par
+        var j = 0;//contador extra para trocar a posição do vetor "pos"
+
+        if (tipo == "p" || tipo == "i") {
+            div_res.innerHTML = "";
+            if (tipo == "p") {
+
+                for (var c = 0; c < ras.length; c++) {
+                    
+                    //se o ra na posição de "c" for par, entre no if
+                    if (ras[c] % 2 == 0) {
+
+                        soma += notas[c];//somando as notas que forem pares
+                        pos.push(c);//guardando no vetor pos,quais as posições do vetor "ras" que forem pares
+
+                    }
+
+                }
+
+                media = soma / pos.length;//calculando média após somar todos os valores
+
+                
+                for (var i = 0; i < ras.length; i++) {
+
+                    //if para imprimir na tela somente as posições pares que estiverem no vetor "pos"
+                    if (pos[j] == i) {
+                        //se a nota da posição atual for maior igual a media , imprima
+                        if(notas[i]>= media){
+                            div_res.innerHTML += "Aluno com RA = " + ras[i] + "(Par) e nota " + notas[i] + " foi selecionado pois a média é " + media.toFixed(2) + "<br>";
+                        }
+                        j++;
+                    }
+                }
+            } else {
+                for (var c = 0; c < ras.length; c++) {
+
+                    //se o ra na posição de "c" for diferente de par, entre no if
+                    if (ras[c] % 2 != 0) {
+                        soma += notas[c];
+                        pos.push(c);
+                    }
+
+                }
+                media = soma / pos.length;
+                for (var i = 0; i < ras.length; i++) {
+                    if (pos[j] == i) {
+                        if(notas[i]>= media){
+                            div_res.innerHTML += "Aluno com RA = " + ras[i] + "(Impar) e nota " + notas[i] + " foi selecionado pois a média é " + media.toFixed(2) + "<br>";
+                        }
+                        j++;
+                    }
+                }
+            }
+
+        } else {
+            alert("valor invalido, entre com P ou I ");
+        }
+
+    }
+</script>

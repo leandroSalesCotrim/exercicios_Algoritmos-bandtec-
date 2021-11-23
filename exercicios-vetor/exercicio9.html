@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+</head>
+
+<body>
+    <h1>Cadastro de linhas de onibus</h1>
+
+    <p>Insira o nome da linha de onibus</p>
+    <input type="text" id="input_onibus">
+    <button onclick="cadastrar()">Cadastrar linha</button>
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="div_res"></div>
+    <div id="div_res2"></div>
+
+
+</body>
+
+</html>
+
+<script>
+    var linhas = [];
+
+    function cadastrar() {
+
+        var onibus = input_onibus.value;
+
+        linhas.push(onibus);
+
+        div_res.innerHTML = "";
+
+        for (var c = 0; c < linhas.length; c++) {
+            div_res.innerHTML += `${linhas[c]}<br>`;
+        }
+    }
+    var qtd_vezes = 0;
+
+    function pesquisar() {
+        var ordem = [];
+        var onibus = input_onibus.value;
+        var existe = false;
+        qtd_vezes = 0;
+
+        if(linhas.length == 0){
+            div_res2.innerHTML = "Você ainda não cadastrou nenhuma linha";
+        }
+
+        for (var c = 0; c < linhas.length; c++) {
+
+            if (linhas[c].toLowerCase() == onibus.toLowerCase()) {
+                existe = true;
+
+                qtd_vezes++;
+                ordem.push(c+1);
+            }
+        }
+        if(existe == false){
+                div_res2.innerHTML = "Você nunca pegou essa linha";
+        }else{
+            div_res2.innerHTML = "Você já pegou essa linha "+qtd_vezes+" vezes, nessa ordem:"+ordem;
+        }
+
+
+
+        // for (var c = 0; c < ordem.length; c++) {
+        //     if (ordem[c] == 321) {
+        //         console.log(c);
+        //     }
+        // }
+
+    }
+
+</script>

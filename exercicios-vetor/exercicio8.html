@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio 8</title>
+</head>
+
+<body>
+  <h1>Cadastro de notas</h1>
+
+  <p>Insira a nota do aluno</p>
+
+  <input type="text" id="input_nota">
+
+  <button onclick="cadastrar()">Cadastrar nota</button>
+
+  <div id="div_res"></div>
+
+  <p>Primeiro valor do intervalo</p>
+
+  <input type="text" id="input_v1">
+
+  <p>Segundo valor do intervalo</p>
+
+  <input type="text" id="input_v2">
+
+  <button onclick="rever()">Rever as notas</button>
+
+  <div id="div_res2"></div>
+
+</body>
+
+</html>
+
+<script>
+  var notas = [];
+
+  function cadastrar() {
+
+    var nota = input_nota.value;
+
+    notas.push(nota);
+
+    div_res.innerHTML = "";
+
+    for (var c = 0; c < notas.length; c++) {
+
+      div_res.innerHTML += `${notas[c]}<br>`;
+
+    }
+
+  }
+
+  function rever() {
+
+    var v1 = Number(input_v1.value);
+    var v2 = Number(input_v2.value);
+    var soma = 0;
+    var c = 0;
+    var qtd_notas = 0;
+
+
+    for (var i = v1; i < v2 + 1; i++) {
+
+      if (notas[c] >= v1 && notas[c] <= v2) {
+        qtd_notas++;
+      }
+      console.log("qtd_notas: " + qtd_notas);
+      c++;
+    }
+    for (var c = 0; c < notas.length; c++) {
+
+      soma += Number(notas[c]);
+    }
+
+    var media = soma / qtd_notas;
+    alert("Foram cadastras " + qtd_notas + " notas que estão no intervalo de  " + v1 + " até " + v2 + " e a média dessas notas é, " + media);
+
+  }
+
+</script>

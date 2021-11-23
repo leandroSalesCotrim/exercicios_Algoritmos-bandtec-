@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de aluno</h1>
+    <br>
+    <h4>Insira o nome do aluno</h4>
+    <input type="text" id="input_aluno">
+    <button onclick="cadastrar()">Cadastrar aluno</button>
+
+    <div id="div_result">
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    var alunos = [];
+
+    function cadastrar(){
+
+        alunos [alunos.length] = input_aluno.value;
+        div_result.innerHTML = "";
+
+        for(var c = alunos.length; c>0; c--){
+            div_result.innerHTML += "<h4>Aluno cadastrado: "+alunos[c-1]+" </h4>";
+        }
+
+    }
+</script>
